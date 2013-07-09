@@ -35,5 +35,15 @@ describe User do
     it {should_not be_valid}
   end
 
+  describe "when email format is invalid " do
+    it "Should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+      @user.email = invalid_address
+      @user.should_not be_valid
+      end
+    end
+  end
 #redo the email validations. there was a problem with the vim file.  
 end
