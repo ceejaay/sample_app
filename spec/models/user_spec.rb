@@ -45,5 +45,22 @@ describe User do
       end
     end
   end
-#redo the email validations. there was a problem with the vim file.  
+  describe "When email format is valid" do
+    it "Should be valid" do
+     addresses = %w[user@foo.COM A_US-ER@f.b.org frst.ls@foo.jp a+b@baz.cn]
+     addresses.each do |valid_email|
+     @user.email = valid_email
+     @user.should be_valid
+     end
+    end
+  end
+  
+  describe "When email is already taken" do
+  before do
+    user_with_same_email = @user.dup
+    user_with_same_email.email = @user.email.upcase
+    user_with_same_email.save
+  end
+   it {should_not be_valid}
+  end
 end
