@@ -21,7 +21,7 @@ describe User do
   it {should respond_to(:password_digest)}
   it {should respond_to(:password)}
   it {should respond_to(:password_confirmation)}
-
+  it {should respond_to(:authenticate)}
   it {should be_valid}
 
   describe "when name is not present" do
@@ -69,7 +69,7 @@ describe User do
   end
 
   describe "When password is not present" do
-    before (@user.password = @user.password_confirmation = " " )
+    before {@user.password = @user.password_confirmation = " " }
     it {should_not be_valid}
   end
   describe "When password doesn't match confirmation" do
@@ -79,5 +79,21 @@ describe User do
   describe "When password confirmation is nil" do
     before {@user.password_confirmation = nil }
     it {should_not be_valid}
+  end
+  describe "Return value of atuthenticate method" do
+    before {@user.save}
+    let(:found_user) {User.find_by_email(@user.email)}
+    describe "with valid password" do
+      it {should == found_user.authenticate(@user.password)}
+    end
+    describe "with invalid password" do
+      let(:user_for_invalid_password) {found_user.authenticate("invalid")}
+      it {should_not == user_for_invalid_password}
+      specify {user_for_invalid_password.should be_false}
+    end
+    describe "With a password that is too short" do
+      before {@user.password = @user.password_confirmation = "a" * 5 }
+      it {should be_invalid}
+    end
   end
 end
