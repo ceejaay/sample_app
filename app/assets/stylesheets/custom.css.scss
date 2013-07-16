@@ -1,5 +1,12 @@
 @import "bootstrap";
-
+/* mixins, variables etc */
+  $GrayMediumLight: #eaeaea;
+  
+  @mixin box_sizing {
+	  -moz-box-sizing: border-box;
+	  -webkit-box-sizing: border-box;
+	  box-sizing: border-box;
+	  }
 /* universial */
 
 html {
@@ -103,4 +110,17 @@ footer ul {
 footer ul li {
 	float: left;
 	margin-left: 10px;
+	}
+
+/* miscellaneous */
+
+$grayMediumLight: #eaeaea;
+
+.debug_dump {
+	
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box_sizing;
 	}
