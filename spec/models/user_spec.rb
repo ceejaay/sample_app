@@ -73,7 +73,7 @@ describe User do
     it {should_not be_valid}
   end
   describe "When password doesn't match confirmation" do
-    before {@user.password_confirmatoin = "mismatch"}
+    before {@user.password_confirmation = "mismatch"}
     it {should_not be_valid}
   end
   describe "When password confirmation is nil" do
