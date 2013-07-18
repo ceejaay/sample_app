@@ -11,6 +11,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.9.0'
   gem 'annotate',  '~> 2.4.1.beta'
+  gem 'factory_girl_rails', '4.2.1'
 
 end
 
