@@ -5,7 +5,7 @@ describe "UserPages" do
   
   describe "Signup page" do
    before {visit signup_path}
-   it {should have_selector('h1', text: "Sign up")}
+   it {should have_selector('h1', text: "Sign Up")}
    it {should have_selector('title', text: full_title(''))}
   end
   
@@ -34,7 +34,7 @@ describe "UserPages" do
         fill_in "Confirmation", with: "foobar"
       end
     it "should create a user" do
-      expect {click_button submit}.to change(User, :count).by(1)
+      expect { click_button submit}.to change(User, :count).by(1)
       end
     end
   end

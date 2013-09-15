@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
 	     #handle a sucessful save
+	     redirect_to @user
 	    else
 		    render 'new'
 	    end
