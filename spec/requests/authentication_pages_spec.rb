@@ -16,7 +16,7 @@ describe "Authentication" do
     end
   end
 
-  describe 'signin' do
+  describe 'signin page' do
    before { visit signin_path }
    
    describe "with invalid information" do
